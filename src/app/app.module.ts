@@ -6,7 +6,10 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { FourplComponent } from './layouts/Fourpl/Fourpl.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { customerComponent } from './layouts/customer/customer.component';
+
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -27,7 +30,9 @@ import { ComponentsModule } from './components/components.module';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    FourplComponent,
+    customerComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

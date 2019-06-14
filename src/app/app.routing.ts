@@ -4,6 +4,8 @@ import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { customerComponent } from './layouts/customer/customer.component';
+import { FourplComponent } from './layouts/Fourpl/Fourpl.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 
 const routes: Routes =[
@@ -30,6 +32,31 @@ const routes: Routes =[
       }
     ]
   }, {
+    path: '',
+    component: FourplComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: './layouts/Fourpl/Fourpl.module#FourplModule'
+      }
+    ]
+  },
+  {
+    path: '',
+    component: customerComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: './layouts/customer/customer.module#customerModule'
+      }
+    ]
+  } ,
+  
+  
+  
+  
+  
+  {
     path: '**',
     redirectTo: 'dashboard'
   }
