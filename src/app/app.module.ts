@@ -11,10 +11,14 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { customerComponent } from './layouts/customer/customer.component';
 
 
+import { FetchSupplierService } from './services/fetch-supplier.service';
+
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
+import { TransporterData } from './classes/fetch-transporter-class';
 
 
 @NgModule({
@@ -34,7 +38,7 @@ import { ComponentsModule } from './components/components.module';
     FourplComponent,
     customerComponent
   ],
-  providers: [],
+  providers: [FetchSupplierService,TransporterData],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
