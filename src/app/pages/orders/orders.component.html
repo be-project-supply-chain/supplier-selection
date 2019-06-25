@@ -25,33 +25,33 @@
                       <th scope="col"></th>
                     </tr>
                   </thead>
-                  <tbody *ngFor="let order of orders;let i = index ">
+                  <tbody *ngFor="let order of orders1;let i = index ">
                     <tr >
                       <th scope="row">
                         <div class="media align-items-center">
                           
                           <div class="media-body">
-                            <span class="mb-0 text-sm">{{order.orderID}}</span>
+                            <span class="mb-0 text-sm">{{order.oid}}</span>
                           </div>
                         </div>
                       </th>
                       <td>
-                        {{order.orderLocation}}
+                        {{NumberToCity(order.location)}}
                       </td>
                       <td>
-                       Rs.{{order.orderAmount}}
+                       Rs.{{order.totalamount}}
                       </td>
                       <td>
-                        {{order.orderType}}
+                        {{order.type}}
                       </td>
                       <td>
-                          {{order.orderWeight}}Kg
+                          {{order.weight}}Kg
                         </td>
                       <td>
                         {{order.deliveryMode}}
                       </td>
                       <td>
-                        <button (click)="fetchSuppliers(order,order.orderLocation,order.deliveryMode)" ><span class="d-none d-md-block">List Transporters</span></button>
+                        <button (click)="fetchSuppliers(i,NumberToCity(order.location),order.deliveryMode)" ><span class="d-none d-md-block">List Transporters</span></button>
                         <!-- <div ngbDropdown placement="bottom-right">
                           <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
                             <i class="fas fa-ellipsis-v"></i>
@@ -67,13 +67,13 @@
                            <td><h4 class="text-white mb-0">Transporter Data</h4></td> 
                         </div>
                      </tr>
-                     <tr *ngIf="order.editable">       
+                     <tr *ngIf="hideOrders[i]">       
                         <th scope="col">Company Name</th>
                         <th scope="col">Ratings</th>
                         <th scope="col"></th>
                       </tr>
                       
-                          <tr [hidden]="!order.editable"  *ngFor="let suppliers of supplierDataFromApi">
+                          <tr [hidden]="!hideOrders[i]"  *ngFor="let suppliers of supplierDataFromApi">
                               <td>{{suppliers.company_name}}</td>
                               <td>{{suppliers.overall_ratings}}</td>
                               <td><button>Select Agency</button></td>

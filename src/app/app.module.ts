@@ -19,6 +19,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { TransporterData } from './classes/fetch-transporter-class';
+import { OrdersService } from './services/orders.service';
 
 
 @NgModule({
@@ -38,7 +39,7 @@ import { TransporterData } from './classes/fetch-transporter-class';
     FourplComponent,
     customerComponent
   ],
-  providers: [FetchSupplierService,TransporterData],
+  providers: [FetchSupplierService,TransporterData , OrdersService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

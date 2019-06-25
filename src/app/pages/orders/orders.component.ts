@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchSupplierService } from 'src/app/services/fetch-supplier.service';
+import { OrdersService } from 'src/app/services/orders.service';
 
 
 @Component({
@@ -11,12 +12,13 @@ export class ordersComponent implements OnInit {
   hideme=[]
   supplierDataFromApi:any
   data:any
-  a={
-    location : 1,
-    hand_delivered : 1,
-    truck_delivered: 0 
+  // a={
+  //   location : 1,
+  //   hand_delivered : 1,
+  //   truck_delivered: 0 
 
-  }
+  // }
+  orders1:any
   orders=[{
     orderID : 101,
     orderLocation : "Mumbai",
@@ -67,10 +69,23 @@ export class ordersComponent implements OnInit {
     orderWeight :250,
     deliveryMode: "Hand Delivered"
   }]
+  hideOrders=[]
+
   public copy: string;
-  constructor(public fetch_supplier : FetchSupplierService
+  constructor(public fetch_supplier : FetchSupplierService,
+    public ordersApi : OrdersService
      ) { 
+    for(var i=0;i<this.orders.length;i++){
+      this.hideOrders.push(false)
+    }
+    this.ordersApi.getOrders()
+    .subscribe(res=>{
+      this.orders1=res
+      console.log(this.orders1)
+    })
     
+
+
   //  fetch_supplier.fetchOrders(this.a).subscribe(res=>{console.log(res) })
   //  console.log(this.val)
    }
@@ -109,11 +124,11 @@ export class ordersComponent implements OnInit {
   }
 
   fetchSuppliers(order,city , deliveryMode){
-    if(order.editable==undefined || order.editable== false){
-      order.editable=true
-    }else{
-      order.editable=false
+    for(var i=0;i<this.orders.length;i++){
+      this.hideOrders[i]=false
     }
+    this.hideOrders[order]=true
+
     let hand_delivered=0
     let truck_delivered=0
     city=this.cityToNumber(city)
@@ -130,7 +145,7 @@ export class ordersComponent implements OnInit {
       truck_delivered
     }
     // order.editable=true
-    console.log() 
+    // console.log() 
     this.fetch_supplier.fetchOrders(data)
     .subscribe(res=>{
       this.supplierDataFromApi=res
