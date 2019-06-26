@@ -76,7 +76,7 @@
                           <tr [hidden]="!hideOrders[i]"  *ngFor="let suppliers of supplierDataFromApi">
                               <td>{{suppliers.company_name}}</td>
                               <td>{{suppliers.overall_ratings}}</td>
-                              <td><button>Select Agency</button></td>
+                              <td><button (click)="selectSupplier(suppliers.company_name,order.oid)">Select Agency</button></td>
                           </tr>
                           
                       

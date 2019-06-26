@@ -19,73 +19,22 @@ export class ordersComponent implements OnInit {
 
   // }
   orders1:any
-  orders=[{
-    orderID : 101,
-    orderLocation : "Mumbai",
-    orderAmount : 1000,
-    orderType: "Electronic",
-    orderWeight :250,
-    deliveryMode: "Hand Delivered"
-  },{
-    orderID : 102,
-    orderLocation : "Delhi",
-    orderAmount : 1000,
-    orderType: "Furniture",
-    orderWeight :250,
-    deliveryMode: "Truck Delivered"
-  },{
-    orderID : 103,
-    orderLocation : "Pune",
-    orderAmount : 1000,
-    orderType: "Electronic",
-    orderWeight :250,
-    deliveryMode: "Hand Delivered"
-  },{
-    orderID : 101,
-    orderLocation : "Mumbai",
-    orderAmount : 1000,
-    orderType: "Electronic",
-    orderWeight :250,
-    deliveryMode: "Hand Delivered"
-  },{
-    orderID : 101,
-    orderLocation : "Mumbai",
-    orderAmount : 1000,
-    orderType: "Electronic",
-    orderWeight :250,
-    deliveryMode: "Hand Delivered"
-  },{
-    orderID : 101,
-    orderLocation : "Mumbai",
-    orderAmount : 1000,
-    orderType: "Electronic",
-    orderWeight :250,
-    deliveryMode: "Hand Delivered"
-  },{
-    orderID : 101,
-    orderLocation : "Mumbai",
-    orderAmount : 1000,
-    orderType: "Electronic",
-    orderWeight :250,
-    deliveryMode: "Hand Delivered"
-  }]
+  
   hideOrders=[]
 
   public copy: string;
   constructor(public fetch_supplier : FetchSupplierService,
     public ordersApi : OrdersService
      ) { 
-    for(var i=0;i<this.orders.length;i++){
-      this.hideOrders.push(false)
-    }
     this.ordersApi.getOrders()
     .subscribe(res=>{
       this.orders1=res
-      console.log(this.orders1)
+      for(var i=0;i<this.orders1.length;i++){
+        this.hideOrders.push(false)
+      }
+      // console.log(this.orders1)
     })
     
-
-
   //  fetch_supplier.fetchOrders(this.a).subscribe(res=>{console.log(res) })
   //  console.log(this.val)
    }
@@ -124,7 +73,7 @@ export class ordersComponent implements OnInit {
   }
 
   fetchSuppliers(order,city , deliveryMode){
-    for(var i=0;i<this.orders.length;i++){
+    for(var i=0;i<this.orders1.length;i++){
       this.hideOrders[i]=false
     }
     this.hideOrders[order]=true
@@ -149,9 +98,30 @@ export class ordersComponent implements OnInit {
     this.fetch_supplier.fetchOrders(data)
     .subscribe(res=>{
       this.supplierDataFromApi=res
-      console.log(this.supplierDataFromApi)
+      // console.log(this.supplierDataFromApi)
     })
-
+  }
+  selectSupplier(sid, oid){
+    console.log(oid)
+    console.log(sid)
+    let data={
+      sid ,
+      oid ,
+      order_status : 1
+    }
+    this.ordersApi.mapOrder(data)
+    .subscribe(res=>{
+      console.log(res)
+      alert("Supplier selected successfully")
+      this.ordersApi.getOrders()
+      .subscribe(res=>{
+        this.orders1=res
+        for(var i=0;i<this.orders1.length;i++){
+          this.hideOrders[i]=false
+        }
+        // console.log(this.orders1)
+      })
+    })
 
   }
 }

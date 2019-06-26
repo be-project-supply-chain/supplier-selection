@@ -14,150 +14,60 @@
   <!-- Page content -->
   <div class="container-fluid mt--7">
     <!-- Table -->
-    <div class="row">
-      <div class="col">
-        <div class="card shadow">
-          <div class="card-header bg-transparent">
-            <h3 class="mb-0">Feedback Form</h3>
-          </div>
-          
-          
-
-          <div class="card bg-secondary shadow border-0">
-            <div class="card-body px-lg-5 py-lg-5">
-             
-              <form role="form">
-                <div class="form-group mb-3">
-                  <div class="input-group input-group-alternative">
-                      <div class="radio">
-                          <b>How would you rate your overall experience with our service?</b><br> 
-                      <label><input type="radio" name="q1" checked> Very Good</label><br>
-                     <label><input type="radio" name="q1"> Good</label><br>
-                      <label><input type="radio" name="q1"> Fair</label><br>
-                       <label><input type="radio" name="q1"> Poor</label><br>
-                     
-                      </div>
-                  </div>
-                </div>
-                <br>
-                <div class="form-group mb-3">
-                   
-                    <div class="input-group input-group-alternative">
-                        
-                       
-                        <div class="radio">
-                           <b> How satisfied are you with the timeliness of order delivery?</b>
-                            <br>
-                        <label><input type="radio" name="q2" checked>Very Good</label><br>
-                  
-                        <label><input type="radio" name="q2">Good</label><br>
-                      
-                          <label><input type="radio" name="q2">Fair</label><br>
-                     
-                            <label><input type="radio" name="q2">Poor</label>
-                          </div>
-                         
-                    </div>
-                  </div>
-                  <br>
-                  <div class="form-group mb-3">
-                      <div class="input-group input-group-alternative">
-                       
-                        <div class="radio">
-                            <b> How satisfied are you with the customer support?</b><br>
-                          <label><input type="radio" name="q3" checked>Very Good</label><br>
-                       
-                          <label><input type="radio" name="q3">Good</label><br>
-                      
-                            <label><input type="radio" name="q3">Fair</label><br>
-                          
-                              <label><input type="radio" name="q3">Poor</label><br>
-                            </div>
-                      </div>
-                      
-                    </div>
-                    <br>
-                    <div class="form-group mb-3">
-                        <div class="input-group input-group-alternative">
-                          
-                          <div class="radio">
-                             <b> How would you rate the interaction with our employee?</b><br>
-                            <label><input type="radio" name="q4" checked>Very Good</label><br>
-                          
-                            <label><input type="radio" name="q4">Good</label><br>
-                       
-                              <label><input type="radio" name="q4">Fair</label><br>
-                          
-                                <label><input type="radio" name="q4">Poor</label>
-                              </div>
-                        </div>
-                      </div>
-                      <br>
-                      <div class="form-group mb-3">
-                          <div class="input-group input-group-alternative">
-                              
-                            <div class="radio">
-                                <b>How would you rate the quality of product?</b><br>
-                              <label><input type="radio" name="q5" checked>Very Good</label><br>
-                           
-                              <label><input type="radio" name="q5">Good</label><br>
-                          
-                                <label><input type="radio" name="q5">Fair</label><br>
-                              
-                                  <label><input type="radio" name="q5">Poor</label><br>
-                                </div>
-                          </div>
-                        </div>
-                        <br>
-                    <div class="form-group mb-3">
-                        <div class="input-group input-group-alternative">
-                         
-                          <div class="radio">
-                              <b>Any troubles faced by our transporter to find your location?</b><br>
-                            <label><input type="radio" name="loco" checked>No</label><br>
-                        
-                            <label><input type="radio" name="loco">Yes</label>
-                          </div>
-                          
-                        </div>
-                      </div>
-                     
-               
-               
-                <div class="text-center">
-                  <div class="form-actions form-group"  ><button type="submit" class="btn btn-success btn-sm">Submit</button></div>
-                </div>
-              </form>
+    <div class="col-xl-12 mb-5 mb-xl-0">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <div class="row align-items-center">
+            <div class="col">
+              <h3 class="mb-0">Order Tracking</h3>
             </div>
           </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
+        </div>
+        <div class="table-responsive">
+          <!-- Projects table -->
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Order ID</th>
+                <th scope="col">Supplier Name</th>
+                <th scope="col">Order Location</th>
+                <th scope="col">Order Amount</th>
+                <th scope="col">Order Type</th>
+                <th scope="col">Order Weight(kgs)</th>
+                <th scope="col">Delivery Mode</th>
+                <th scope="col">Order Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let order of orders">
+                <td>
+                  {{order.oid}}
+              </td>
+                <td>
+                  {{order.sid}}
+                </td>
+                <td>
+                  {{NumberToCity(order.location)}}
+                </td>
+                <td>
+                  {{order.totalamount}}
+                </td>
+                <td>
+                  {{order.type}}
+                </td>
+                <td>
+                  {{order.weight}}
+                </td>
+                <td>
+                  {{order.deliveryMode}}
+                </td>
+                <td>
+                  {{NumberToOrderStatus(order.order_status)}}
+                </td>                
+              </tr>
+              
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

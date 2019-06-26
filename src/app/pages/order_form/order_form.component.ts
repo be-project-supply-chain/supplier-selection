@@ -47,6 +47,7 @@ export class order_formComponent implements OnInit {
     this.orderpost.postOrders(data)
     .subscribe(res=>{
       console.log(res)
+      alert("Order sucessfully submitted")
     })
     
   }

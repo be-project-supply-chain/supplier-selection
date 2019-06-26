@@ -16,4 +16,15 @@ export class OrdersService {
   getOrders():Observable<Object>{
     return this.http.get('http://localhost:5000/db/fetch_orders_all')
   }
+
+  mapOrder(data : any ):Observable<Object> {
+    return this.http.post('http://localhost:5000/db/map_order',data)
+  }
+
+  trackOrders4PL() : Observable<Object>{
+    return this.http.get('http://localhost:5000/db/trace_order_4pl')
+  }
+  trackOrdersCustomer(): Observable<Object>{
+    return this.http.get('http://localhost:5000/db/trace_order_customer')
+  }
 }
