@@ -40,9 +40,7 @@ export class track_order_customerComponent implements OnInit {
     switch(x){
       case 1:return "Order Processed"
       case 2:return "Order Dispatched"
-      case 3:return "Order In Transit"
-      case 4:return "Order Delivered"
-      default : return "Order Processing"
+      case 3:return "Order In Delivered"
     }
   }
 }

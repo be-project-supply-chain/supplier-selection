@@ -27,4 +27,16 @@ export class OrdersService {
   trackOrdersCustomer(): Observable<Object>{
     return this.http.get('http://localhost:5000/db/trace_order_customer')
   }
+  processOrder3PL(data : any): Observable<Object>{
+    return this.http.post('http://localhost:5000/db/process_order_3pl',data)
+  }
+  updateProcessToDispatched(data : any): Observable<Object>{
+    return this.http.post('http://localhost:5000/db/process_to_dispatched',data)
+  }
+  getOrderToBeCompleted(data : any): Observable<Object>{
+    return this.http.post('http://localhost:5000/db/order_delivery_complete_3pl',data)
+  }
+  updateDispatchToDelivered(data:any): Observable<Object>{
+    return this.http.post('http://localhost:5000/db/dispatched_to_deliver',data)
+  }
 }

@@ -1,0 +1,91 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      </div>
+    </div>
+  </div>
+  <!-- Page content -->
+  <div class="container-fluid mt--7">
+      <div class="row mt-1">
+          <div class="col">
+            <div class="card bg-default shadow">
+              <div class="card-header bg-transparent border-0">
+                <h3 class="text-white mb-0">Orders</h3>
+              </div>
+              <div class="table-responsive">
+                <table class="table align-items-center table-dark table-flush">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">Order ID</th>
+                      <th scope="col">Order Location</th>
+                      <th scope="col">Order Amount</th>
+                      <th scope="col">Order Type</th>
+                      <th scope="col">Weight of Order</th>
+                      <th scope="col">Delivery Mode</th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody *ngFor="let order of orders1;let i = index ">
+                    <tr >
+                      <th scope="row">
+                        <div class="media align-items-center">
+                          
+                          <div class="media-body">
+                            <span class="mb-0 text-sm">{{order.oid}}</span>
+                          </div>
+                        </div>
+                      </th>
+                      <td>
+                        {{NumberToCity(order.location)}}
+                      </td>
+                      <td>
+                       Rs.{{order.totalamount}}
+                      </td>
+                      <td>
+                        {{order.type}}
+                      </td>
+                      <td>
+                          {{order.weight}}Kg
+                        </td>
+                      <td>
+                        {{order.deliveryMode}}
+                      </td>
+                      <td>
+                        <button (click)="fetchSuppliers(i,NumberToCity(order.location),order.deliveryMode)" ><span class="d-none d-md-block">List Transporters</span></button>
+                        <!-- <div ngbDropdown placement="bottom-right">
+                          <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                            <i class="fas fa-ellipsis-v"></i>
+                          </a>
+                          <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                            <button class="dropdown-item" >Select Supplier</button>
+                          </div>
+                        </div> -->
+                      </td>
+                    </tr>
+                    <tr *ngIf="order.editable">
+                        <div align="center" class="card-header bg-transparent border-0" >
+                           <td><h4 class="text-white mb-0">Transporter Data</h4></td> 
+                        </div>
+                     </tr>
+                     <tr *ngIf="hideOrders[i]">       
+                        <th scope="col">Company Name</th>
+                        <th scope="col">Ratings</th>
+                        <th scope="col"></th>
+                      </tr>
+                      
+                          <tr [hidden]="!hideOrders[i]"  *ngFor="let suppliers of supplierDataFromApi">
+                              <td>{{suppliers.company_name}}</td>
+                              <td>{{suppliers.overall_ratings}}</td>
+                              <td><button (click)="selectSupplier(suppliers.company_name,order.oid)">Select Agency</button></td>
+                          </tr>
+                          
+                      
+              
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      

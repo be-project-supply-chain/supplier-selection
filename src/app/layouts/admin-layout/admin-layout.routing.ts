@@ -10,6 +10,8 @@ import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
 // import { ordersComponent } from '../../pages/orders/orders.component';
 // import { order_formComponent } from '../../pages/order_form/order_form.component';
 import { track_order_3plComponent } from '../../pages/track_order_3pl/track_order_3pl.component';
+import { processed_3pl_ordersComponent } from 'src/app/pages/processed_3pl_orders/processed_3pl_orders.component';
+import { delivered_3pl_ordersComponent } from 'src/app/pages/delivered_3pl_orders/delivered_3pl_orders.component';
 // import { track_order_4plComponent } from '../../pages/track_order_4pl/track_order_4pl.component';
 // import { track_order_customerComponent } from '../../pages/track_order_customer/track_order_customer.component';
 
@@ -24,6 +26,8 @@ export const AdminLayoutRoutes: Routes = [
     // { path: 'order_form',   component: order_formComponent },
     // { path: 'orders',   component: ordersComponent },
     { path: 'track_order_3pl',   component: track_order_3plComponent },
+    { path: 'processed_3pl_orders/:id',   component: processed_3pl_ordersComponent },
+    { path: 'delivered_3pl_orders/:id',   component: delivered_3pl_ordersComponent },
     // { path: 'track_order_customer',   component: track_order_customerComponent },
     // { path: 'track_order_4pl',   component: track_order_4plComponent }
     
